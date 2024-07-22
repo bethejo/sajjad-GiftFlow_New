@@ -1,15 +1,63 @@
-.home{
+.home {
     width: 80%;
     margin: 120px auto;
     margin-bottom: 0;
     padding-bottom: 40px;
 }
 
-.home h1{
+.home h1 {
     text-align: center;
     font-size: 3.5rem;
     font-weight: bolder;
     margin: 40px auto;
+}
+
+.img-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    perspective: 1000px;
+    border-radius: 20px;
+    overflow: hidden;
+    
+}
+
+.home .img::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    position: relative;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 300% 300%;
+    animation: gradient 6s ease infinite;
+    z-index: -1;
+    width: 400px;
+    height: 400px;
+    perspective: 1000px;
+    border-radius: 20px;
+    
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .home .img{
@@ -17,18 +65,25 @@
     justify-content: center;
     align-items: center;
     margin: 0px auto;
+    perspective: 1000px;
+    height: 400px;
+    
 }
 
 .home .img img{
     width: 400px;
+    transition: transform 0.1s ease-in-out;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background: linear-gradient(120deg, #f093fb, #f5576c, #000000, #005dfe54, #ff9a9e);
 }
 
-.home p{
+.home p {
     text-align: center;
     font-size: 1.2rem;
 }
 
-.home h5{
+.home h5 {
     margin: 35px auto;
     font-size: 1.04rem;
     text-align: center;
@@ -39,17 +94,18 @@
     margin: 120px auto;
 }
 
-.home .partners h3{
+.home .partners h3 {
     margin: 20px auto;
     text-align: center;
     font-size: 2.5rem;
 }
 
-.home .partners .moving-bar{
+.home .partners .moving-bar {
     margin: 100px auto;
     overflow: hidden;
 }
-.home .partners .moving-bar-inner{
+
+.home .partners .moving-bar-inner {
     margin: 30px auto;
     display: flex;
     justify-content: center;
@@ -58,7 +114,7 @@
     animation: move 10s linear infinite;
 }
 
-.home .partners .moving-bar-inner img{
+.home .partners .moving-bar-inner img {
     width: 230px;
 }
 
@@ -71,7 +127,7 @@
     }
 }
 
-.home .button{
+.home .button {
     margin: 30px auto;
     display: flex;
     justify-content: center;
@@ -79,7 +135,7 @@
     border: none;
 }
 
-.home button{
+.home button {
     cursor: pointer;
     padding: 15px 45px;
     font-size: 1.2rem;
@@ -90,11 +146,9 @@
     color: #000;
 }
 
-
-.home button:hover{
+.home button:hover {
     background-color: #eb81cb;
 }
-
 
 .row {
     margin: 30px auto;
@@ -104,28 +158,28 @@
     flex-wrap: wrap;
 }
 
-.row .card{
+.row .card {
     padding: 20px;
-  width: 290px;
-  height: 380px;
-  display: flex;
-  gap: 20px;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 10px;
-  border: 1px solid #00000027;
-  box-shadow: 2px 2px 5px #deb5f171;
-  transition: all .3s ease-in;
-  margin: 20px;
+    width: 290px;
+    height: 380px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 1px solid #00000027;
+    box-shadow: 2px 2px 5px #deb5f171;
+    transition: all .3s ease-in;
+    margin: 20px;
 }
 
-.row .card h5{
+.row .card h5 {
     font-size: 1.4rem;
-  color: #cd78d8d5;
+    color: #cd78d8d5;
 }
 
-.row .card p{
+.row .card p {
     height: 300px;
     color: #333;
     font-size: 1rem;
@@ -174,20 +228,18 @@
     font-size: 1.25rem;
 }
 
-.card p{
+.card p {
     font-size: 1rem;
 }
 
-
-footer{
+footer {
     text-align: center;
     font-size: 1.1rem;
     color: #eb81cb;
 }
 
 @media only screen and (max-width: 400px) {
-    .row .card{
+    .row .card {
         height: auto;
     }
-
 }

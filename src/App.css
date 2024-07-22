@@ -5,6 +5,7 @@ body{
   box-sizing: border-box;
     direction: rtl;
     background: linear-gradient(#99abb81e, #812d6d6c);
-
-}
-
+    background-color: #cac2c13b;
+    background-image: url("https://www.transparenttextures.com/patterns/xv.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  }

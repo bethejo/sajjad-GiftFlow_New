@@ -7,7 +7,7 @@ export default function ProductCard({ id, name, description, image,price, isLike
       <img src={image} alt={name} className="product-image" />
       <h2 className="product-name">{name}</h2>
       <p className="product-description">{description}</p>
-      <p className="price">{price} $</p>
+      <p className="price">{price} ₪</p>
       <div className="icon-container">
         <button onClick={onLikeToggle} id="icon-button">
           {isLiked ? '❤️' : '🤍'}

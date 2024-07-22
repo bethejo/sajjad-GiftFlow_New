@@ -15,6 +15,7 @@ const GiftsPage = () => {
   const [editingGift, setEditingGift] = useState(null);
   const [invite, setInvitation] = useState(false);
   const [view, setView] = useState('list');
+  const [suggestedGifts, setSuggestedGifts] = useState([]);
 
   const addGift = (childName, gift) => {
     setChildren(children?.map(child => 
@@ -53,24 +54,45 @@ const GiftsPage = () => {
             <>
               <div className="view-switcher">
                 <button className="btn" onClick={() => setView('add')}>Add Gift</button>
+                <button className="btn" onClick={() => setView('addedgifts')}>Child's Gift</button>
                 <button className="btn" onClick={() => setView('list')}>Suggesting Gifts</button>
                 <button className="btn" onClick={() => setView('list')}>The child will love</button>
               </div>
-              {view === 'list' && (
-                <GiftList
-                  className = 'gift'
-                  gifts={selectedChild?.gifts} 
-                  deleteGift={deleteGift} 
-                  setEditingGift={setEditingGift} 
-                  childName={selectedChild?.name}
-                />
-              )}
               {view === 'add' && (
                 <AddGiftForm 
                   addGift={addGift} 
                   setAddingGift={setAddingGift} 
                   childName={selectedChild?.name}
                 />
+              )}
+
+              {
+                view === 'addedgifts' && (
+                  <GiftList
+                    className='gift'
+                    gifts={selectedChild?.gifts || []} // Ensure gifts is an array
+                    deleteGift={deleteGift} 
+                    setEditingGift={setEditingGift} 
+                    childName={selectedChild?.name}
+                  />
+                )
+              }
+
+              {view === 'list' && (
+                <>
+                  {suggestedGifts.length > 0 && (
+                    <div className="suggested-gifts">
+                      <h3 className='gifts-header'>Suggested Gifts</h3>
+                      <GiftList
+                        gifts={suggestedGifts}
+                        deleteGift={deleteGift}
+                        setEditingGift={setEditingGift}
+                        childName={selectedChild?.name}
+                        isSuggested={true}
+                      />
+                    </div>
+                  )}
+                </>
               )}
             </>
           )}
@@ -104,10 +126,7 @@ const GiftsPage = () => {
 
       {selectedChild && (
         <div className="invite-section">
-          <button className="btn invite-btn" onClick={() => {
-            console.log('Invite button clicked'); // Debug log
-            setInvitation(true);
-          }}>Invite Friends</button>
+          <button className="btn invite-btn" onClick={() => setInvitation(true)}>Invite Friends</button>
         </div>
       )}
 
@@ -115,7 +134,7 @@ const GiftsPage = () => {
         <div className="modal-overlay">
           <div className="modal-content">
             <InvetationForom 
-              listOfGifts={selectedChild.gifts}
+              listOfGifts={selectedChild.gifts || []} // Ensure gifts is an array
               childName={selectedChild.name} 
             />
           </div>
